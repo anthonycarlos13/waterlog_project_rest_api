@@ -1,3 +1,3 @@
 __author__ = 'anthonymendoza'
 
-california_ground_water = "/Users/anthonymendoza/Documents/seed_consulting_group/seedLA_HTB_2015_project/water_sustainability/data_store/california_data_store/ground_water_totals_california_usgs.csv"
+california_ground_water = "/Users/anthonymendoza/Documents/seed_consulting_group/seedLA_HTB_2015_project/water_sustainability/data_store/california_data_store/runoff_water_totals_california_usgs.csv"
