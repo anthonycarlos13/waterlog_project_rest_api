@@ -32,7 +32,7 @@ For `.../water/data/$`, the following exist:
 **Usage: Pre-production**
 ----
 
-**Non-technical:**
+**Non-technical**
     1. Download git: `pip install git`
     2. Clone the repository to your local machine: `git clone https://github.com/anthonycarlos92/seedLA_HTB_2015.git`
     3. Open your terminal and proceed to the path of your cloned repo (probably in Downloads tbh): `cd /path/to/directory/`
@@ -42,10 +42,11 @@ For `.../water/data/$`, the following exist:
     7. Hit endpoint 127.0.0.1:8000 (or whatever port you chose on local machine...)
 
 **PLEASE NOTE**  If you do not intend to contribute to the REST API, you should not need to do anything mentioned above
+
 **PLEASE ALSO NOTE** Before making any contributions (ie `git commit -m "..."` `git push origin <your branch>` please alert
 the team to ensure no versioning conflicts will arise. 
 
-**Techies:**
+**Techies**
     1. Fork repository https://github.com/anthonycarlos92/seedLA_HTB_2015.git
     2. `git clone https://github.com/<your user name>/seedLA_HTB_2015.git`
     3. If update made, create pull request to master repo
