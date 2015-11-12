@@ -29,6 +29,45 @@ For `.../water/data/$`, the following exist:
 * `?method=...`: Accepted parameters include any method found in the `.../water/$` endpoint
 * `?raw_data=..` : Accepted parameters include `true` or `false` to see robot or human data output, respectively
 
+Example GET Request:
+GET `.../water/data/?method=storm_water&raw_data=true`
+
+Example 202 Response: 
+
+```python
+   {
+    "standard_deviation": 7.058092246788836,
+    "maximum": {
+        "max_year": "1883-1884",
+        "max_precipitation": 38.18
+    },
+    "source": "National Weather Service",
+    "minimum": {
+        "min_year": "2006-2007",
+        "min_precipitation": 3.21
+    },
+    "la_precipitation_per_annum": [
+        {
+            "Season": "2014-2015",
+            "Difference_from_Average": "-6.29",
+            "Total_Rainfall": "8.52"
+        },
+        {
+            "Season": "2013-2014",
+            "Difference_from_Average": "-8.73",
+            "Total_Rainfall": "6.08"
+        },
+        {
+            "Season": "2012-2013",
+            "Difference_from_Average": "-8.96",
+            "Total_Rainfall": "5.85"
+        },
+    ],
+    "total_precipitation": 2043.2500000000005,
+    "average_precipitation": 14.806159420289859
+}
+```
+
 **Usage: Pre-production**
 ----
 
