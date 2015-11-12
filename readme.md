@@ -5,7 +5,6 @@
 ----
 
 # Non-techies:
-
 Technical Usage:
 1. Download git
 2. Download django
