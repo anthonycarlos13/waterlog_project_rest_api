@@ -13,7 +13,7 @@ import helpers.query_helpers
 @api_view(['GET'])
 def storm_water_api(request, format=None):
     if request.method == 'GET':
-        if request.query_params['method'] == 'stormwater':
+        if request.query_params['method'] == 'storm_water':
             if request.query_params['raw_data'] == 'true':
                 data_response = []
                 response = {}
