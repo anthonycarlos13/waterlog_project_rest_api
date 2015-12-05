@@ -1,3 +1,4 @@
+__author__ = 'anthonymendoza'
 from django.db.models import Q, QuerySet
 from rest_framework.response import Response
 from rest_framework import status

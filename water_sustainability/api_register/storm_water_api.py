@@ -14,7 +14,7 @@ import helpers.query_helpers
 @api_view(['GET'])
 def storm_water_api(request, format=None):
     if request.method == 'GET':
-        if request.query_params['method'] == 'storm_water':
+        if request.query_params['method'] == 'storm_water_runoff':
             if request.query_params['raw_data'] == 'true':
                 count = 0
                 total_rainfall = 0

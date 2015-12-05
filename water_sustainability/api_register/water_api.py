@@ -9,13 +9,8 @@ from django.db.models import Q
 def water_api(request, format=None):
     if request.method == 'GET':
         response = {
-            "studied_methods" : ['Water Runoff', 'Recycled Waste Water', 'Ground Water' ],
-            "associated_query_parameters": {
-                'Water Runoff': "storm_water",
-                'Recycled Water': "recycled_water",
-                'Ground Water': "ground_water"
-            }
+            "ground_water" : ['groundwater_wells', 'groundwater_basins'],
+            "runoff_water" : ['storm_water_runoff'],
+            "recycled_water": ['recycled_water']
         }
         return Response(response, status=status.HTTP_200_OK)
-    else:
-        return Response(exception=ValueError("We currently do not have data on your method of water sustainability"))
