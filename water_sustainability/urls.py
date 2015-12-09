@@ -4,11 +4,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import api
 
 urlpatterns = [
-    url(r'', api.welcome),
-    url(r'^water/runoff_water/data/$', api.storm_water_api),
-    url(r'^water/ground_water/data/$', api.ground_water_api),
-    url(r'^water/recycled_water/data/$', api.water_api),
-    url(r'^water/$', api.water_api)
+    url(r'^(?P<country>\w{0,50})/$', api.country_api),
+    url(r'^(?P<country>\w{0,50})/(?P<state>\w{0,50})/$', api.state_api),
+    url(r'^(?P<country>\w{0,50})/(?P<state>\w{0,50})/(?P<county>\w{0,50})/$', api.county_api)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

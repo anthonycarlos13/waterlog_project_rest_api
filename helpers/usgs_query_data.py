@@ -14,11 +14,9 @@ def retrieve_real_time_ground_water_levels_los_angeles_county_as_json(local_code
     url = 'http://waterservices.usgs.gov/nwis/gwlevels'
     response = requests.get(url, params=payload)
     status = response.status_code
-    print status
     rel_data = json.loads(response.text)
     for key, value in rel_data.iteritems():
-        if key == 'value':
-            print value
+        pass
 
 
 def check_valid_county_code(state_code, county_code):
@@ -43,7 +41,7 @@ def retrieve_real_time_ground_water_levels_los_angeles_county_as_xml(county_code
     # else:
     #     raise ValueError("County Code not recognized.")
     #
-    # if county_code == '037' and state_code == '06':
+    # if county_code == '037' and state_code == 'california':
     #     response = gw_levels_2014
     # else:
     payload = {'format': 'waterml',
@@ -56,7 +54,6 @@ def retrieve_real_time_ground_water_levels_los_angeles_county_as_xml(county_code
     root = ET.fromstring(response.text)
     if status == 200:
         processed_data = time_series_aggregator(root)
-    print processed_data
     return processed_data
 
 
