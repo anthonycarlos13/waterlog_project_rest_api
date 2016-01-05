@@ -3,7 +3,7 @@ import csv
 import json
 import requests
 import xml.etree.ElementTree as ET
-from water_sustainability.data_store import county_codes, gw_levels_2014
+from water_store.data_store import county_codes, gw_levels_2014
 
 
 def retrieve_real_time_ground_water_levels_los_angeles_county_as_json(local_code, start_date, end_date):

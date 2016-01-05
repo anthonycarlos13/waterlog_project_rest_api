@@ -3,98 +3,32 @@ __author__ = 'anthonymendoza'
 from rest_framework.response import Response
 import csv
 
-from water_sustainability.data_store import united_states_of_america
+from water_store.data_store import united_states_of_america
+from django.apps import apps
+
+country_model = apps.get_model('water_store', 'Country')
+state_model = apps.get_model('water_store', 'State')
+county_model = apps.get_model('water_store', 'County')
 
 
-# TODO migrate these to the helpers dir
-def country_helper(country):
-    data_resp_obj = {}
+def import_data_to_data_models():
+    db = open(united_states_of_america.county_codes)
+    usa_county_codes = csv.DictReader(db)
 
-    if str(country).lower() in ['000', 'usa', 'us', 'united_states', 'united_states_of_america']:
-        db = open(united_states_of_america.county_codes)
-        county_codes = csv.DictReader(db)
-        # State = namedtuple("State", ["state", "state_code"])
+    usa = country_model(name="United States of America", abbreviation="USA", country_code=1)
+    usa.save()
 
-        for data in county_codes:
-            current_state = data['state']
+    for data in usa_county_codes:
+        current_state = data['state']
+        try:
+            current_state_model = state_model.objects.get(abbreviation__iexact=current_state)
 
-            if current_state not in data_resp_obj:
-                data_resp_obj[current_state] = [{'county': data['county'],
-                                             'county_code': data['state_code']+data['county_code'],
-                                             'active_status': data['active_status']}]
-            else:
-                data_resp_obj[current_state].append(
-                    {'county': data['county'],'county_code': data['state_code']+data['county_code'],'active_status': data['active_status']})
-        error = None
-
-    else:
-        error = Response(exception=ValueError("We do not support your country"))
-
-    response_obj = {
-            'notes': "analytics for entire state coming soon",
-            'source': "United States Census Bureau",
-            'source_url': "http://www.census.gov/2010census/partners/pdf/FIPS_StateCounty_Code.pdf",
-            'data': data_resp_obj,
-            'error_message' : error
-        }
-
-    return response_obj
-
-
-def state_helper(country):
-    data_resp_obj = {}
-
-    if str(country).lower() in ['000', 'usa', 'us', 'united_states', 'united_states_of_america']:
-        db = open(united_states_of_america.county_codes)
-        county_codes = csv.DictReader(db)
-        # State = namedtuple("State", ["state", "state_code"])
-
-        for data in county_codes:
-            current_state = data['state']
-
-            if current_state not in data_resp_obj:
-                data_resp_obj[current_state] = data['state_code']
-            else:
-                data_resp_obj[current_state] = data['state_code']
-
-        error = None
-
-    else:
-        error = Response(exception=ValueError("We do not support your country"))
-
-    response_obj = {
-            'notes': "analytics for entire state coming soon",
-            'source': "United States Census Bureau",
-            'source_url': "http://www.census.gov/2010census/partners/pdf/FIPS_StateCounty_Code.pdf",
-            'data': data_resp_obj,
-            'error_message' : error
-    }
-
-    return response_obj
-
-
-def county_helper(country, state):
-    state_data = []
-    if str(country).lower() in ['000', 'usa', 'us', 'united_states', 'united_states_of_america']:
-        _county_helper_response = country_helper(country=country)
-
-        if _county_helper_response['error_message'] is None:
-            try:
-                state = str(state).upper()
-                state_data = _county_helper_response['data'][state]
-                error_message = None
-            except Exception as e:
-                error_message = "%s" % e
-        else:
-            error_message = _county_helper_response['error_message']
-
-        response_obj = {
-            'notes': "Analytics for country coming soon",
-            'source': "United States Census Bureau",
-            'source_url': "http://www.census.gov/2010census/partners/pdf/FIPS_StateCounty_Code.pdf",
-            state: state_data,
-            'error_message': error_message
-        }
-
-        return response_obj
-
+            c = county_model(name=data['county'], state_internal=current_state_model, county_code=data['county_code'],
+                             active_status=data['active_status'])
+            c.save()
+        except Exception:
+            s = state_model(name=data['name'], abbreviation=data['state'], country_internal=usa, state_code=data['state_code'])
+            s.save()
+            c = county_model(name=data['county'], state_internal=s, county_code=data['county_code'],
+                             active_status=data['active_status'])
+            c.save()

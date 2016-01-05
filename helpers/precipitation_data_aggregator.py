@@ -5,7 +5,7 @@ from django.apps import apps
 import statistics
 import csv
 
-from water_sustainability.data_store.los_angeles_county import la_county_precipitation_data
+from water_store.data_store.los_angeles_county import la_county_precipitation_data
 import helpers.query_helpers
 
 
@@ -46,7 +46,7 @@ def precipitation_water_helper(county, start_date, end_date):
         r_obj.append("National Weather Service")
         return r_obj
         # elif request.query_params['raw_data'] == 'false':
-        #     storm_water_model_instance = apps.get_model('water_sustainability', 'StormWater')
+        #     storm_water_model_instance = apps.get_model('water_store', 'StormWater')
         #     storm_water_serializer = StormWaterSerializer
         #     return helpers.query_helpers.get_products(storm_water_model_instance, storm_water_serializer, request)
         # else:

@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'water_records',
+    'water_store',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,10 +76,15 @@ WSGI_APPLICATION = 'rest_api_htb_2015.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rest_waterlog',
+        'USER': 'seed',
+        'PASSWORD': 'seed2015',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

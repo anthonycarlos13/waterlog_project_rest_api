@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import csv
 
-from water_sustainability.data_store.los_angeles_county import well_depth_data
+from water_store.data_store.los_angeles_county import well_depth_data
 import helpers.usgs_query_data
 
 
