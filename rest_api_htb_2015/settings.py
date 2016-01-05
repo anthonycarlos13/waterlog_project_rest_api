@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'water_sustainability',
+    'water_records',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'seedLA_HTB_2015.urls'
+ROOT_URLCONF = 'rest_api_htb_2015.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'seedLA_HTB_2015.wsgi.application'
+WSGI_APPLICATION = 'rest_api_htb_2015.wsgi.application'
 
 
 # Database
