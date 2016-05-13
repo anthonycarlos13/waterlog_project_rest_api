@@ -52,6 +52,8 @@ def facility_data_api(request, format=None, **kwargs):
         elif fac == 'spreading_grounds':
             if spr_model.objects.filter(county__name__iexact='los angeles county').count() == 0:
                 sp_gds_gimme()
+                print "THIS SHOULDN'T HAPPEN LIKE EVER."
+
             spr = spr_model.objects.all()
             _serializer = SpreadingGroundSerializer(spr, many=True)
         elif fac == 'evapotranspiration':

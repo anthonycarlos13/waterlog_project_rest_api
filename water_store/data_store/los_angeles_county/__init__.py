@@ -7,3 +7,4 @@ gw_levels_2014 = "/rest_api/waterlog_rest_api/water_store/data_store/los_angeles
 wrp_data = "/rest_api/waterlog_rest_api/water_store/data_store/los_angeles_county/wrp_data.csv"
 cimis = "/rest_api/waterlog_rest_api/water_store/data_store/los_angeles_county/cimis_real_data.json"
 sp_data = "/rest_api/waterlog_rest_api/water_store/data_store/los_angeles_county/spreading_ground.json"
+

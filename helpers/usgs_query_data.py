@@ -20,7 +20,13 @@ def retrieve_real_time_ground_water_levels_los_angeles_county_as_xml():
     processed_data = []
     payload = {'format': 'waterml',
                'countyCd': '06037',
+<<<<<<< HEAD
                'siteType': 'GW'}
+=======
+               'siteType': 'GW',
+               'startDT': '1900-01-01',
+               'endDT': '2016-02-14'}
+>>>>>>> 5307f227cd0bbb9ce2e7a7e87865d68eaec22d44
     url = 'http://waterservices.usgs.gov/nwis/gwlevels'
     response = requests.get(url, params=payload)
     status = response.status_code
@@ -44,8 +50,11 @@ def data_model_aggregator(root):
             pass
         else:
             for child in timeSeries:
+<<<<<<< HEAD
                 print child
                 print child.tag
+=======
+>>>>>>> 5307f227cd0bbb9ce2e7a7e87865d68eaec22d44
                 if child.tag == '{http://www.cuahsi.org/waterML/1.2/}sourceInfo':
                     gw_site_name = child.find('{http://www.cuahsi.org/waterML/1.2/}siteName').text
                     gw_site_code = child.find('{http://www.cuahsi.org/waterML/1.2/}siteCode').text
