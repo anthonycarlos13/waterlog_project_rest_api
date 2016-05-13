@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *.pyc
 
+# Files that are private and shouldnt be sent up
+PRIVATE*
+private*
+
 # C extensions
 *.so
 

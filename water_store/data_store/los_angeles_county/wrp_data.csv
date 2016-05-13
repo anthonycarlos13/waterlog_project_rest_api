@@ -1,0 +1,55 @@
+Year,Plant,Region,Treatment,Capacity,WaterProducedMGD,WaterProducedAFY,O&M($/AF),O&M($/Y),Water Reused (MGD),Water Reused (AFY),Reuse Sites,Reuse Site Size (Acres)
+2014,La Canada WRP,Los Angeles Basin,Disinfected Secondary Effluent,0.2,0.079,89,"$4,081.00","$363,209.00",0.079,89,1,105
+2014,Long Beach WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",25,16.34,18314,$341.00,"$6,245,074.00",5.526,6193,66,1964
+2014,Los Coyotes WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",37.5,22.41,24804,$356.00,"$8,830,224.00",6.656,7459,278,2471.8
+2014,Pomona WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,7.4,8293,$453.00,"$3,756,729.00",7313,8195,202,2198
+2014,San Jose Creek WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",100,59.43,66589,$288.29,"$19,196,826.00",45430,50901,166,3528.7
+2014,Whittier Narrows WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,8.6,9639,$452.00,"$4,356,828.00",8487,9510,18,969.2
+2014,Valencia WRP,Santa Clarita Valley,Tertiary recycled water,21.6,14.25,15968,$748.00,"$11,944,064.00",0.29,326,3,129
+2014,Saugus WRP,Santa Clarita Valley,Tertiary recycled water,6.5,5.31,5945,$593.00,"$3,525,385.00",0,0,0,0
+2014,Lancaster WRP,Antelope Valley,Tertiary recycled water,18,13.63,15268,$620.00,"$9,466,160.00",9.91,11103,6,3011
+2014,Palmdale WRP,Antelope Valley,Tertiary recycled water,12,8.5,9525,$889.00,"$8,467,725.00",7.566,8478,3,2069
+2013,La Canada WRP,Los Angeles Basin,Disinfected Secondary Effluent,0.2,0.082,93,"$3,337.00","$310,341.00",0.082,93,1,105
+2013,Long Beach WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",25,18.6,20894,$255.00,"$5,327,970.00",6.048,6777,63,1944
+2013,Los Coyotes WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",37.5,20.43,22955,$333.00,"$7,644,015.00",5.947,6665,278,2471.8
+2013,Pomona WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,8.74,9826,$320.00,"$3,144,320.00",3.267,3661,196,2197
+2013,San Jose Creek WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",100,66.96,75234,$233.59,"$17,573,742.00",46.576,52191,148,3392.9
+2013,Whittier Narrows WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,7.71,8659,$460.00,"$3,983,140.00",7.602,8519,18,969.2
+2013,Valencia WRP,Santa Clarita Valley,Tertiary recycled water,21.6,14.84,16630,$669.00,"$11,125,470.00",0.261,293,3,129
+2013,Saugus WRP,Santa Clarita Valley,Tertiary recycled water,6.5,5.05,5679,$546.00,"$3,100,734.00",0,0,0,0
+2013,Lancaster WRP,Antelope Valley,Tertiary recycled water,18,14.58,16278,$451.00,"$7,341,378.00",11.32,12684,6,3126
+2013,Palmdale WRP,Antelope Valley,Tertiary recycled water,12,8.37,9402,$728.00,"$6,844,656.00",7.052,7902,3,2069
+2012,La Canada WRP,Los Angeles Basin,Disinfected Secondary Effluent,0.2,0.083,93,"$3,358.00","$312,294.00",0.083,93,1,105
+2012,Long Beach WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",25,18.22,20472,$270.00,"$5,527,440.00",6.112,6868,62,1941.9
+2012,Los Coyotes WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",37.5,23.16,26018,$293.00,"$7,623,274.00",5.323,5982,275,2471.8
+2012,Pomona WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,8.49,9541,$328.00,"$3,129,448.00",2885,3241,196,2197
+2012,San Jose Creek WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",100,67.5,75849,$220.53,"$16,726,891.00",38.506,43266,134,2922.4
+2012,Whittier Narrows WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,8.57,9624,$405.00,"$3,897,720.00",8.449,9494,18,969.2
+2012,Valencia WRP,Santa Clarita Valley,Tertiary recycled water,21.6,14.86,16695,$645.00,"$10,768,275.00",0.339,381,3,129
+2012,Saugus WRP,Santa Clarita Valley,Tertiary recycled water,6.5,4.96,5576,$614.00,"$3,423,664.00",0,0,0,0
+2012,Lancaster WRP,Antelope Valley,Tertiary recycled water,18,11.45,12869,$373.00,"$4,800,137.00",11.36,12765,6,1752
+2012,Palmdale WRP,Antelope Valley,Tertiary recycled water,12,8.63,9698,$598.00,"$5,799,404.00",7.228,8121,3,2069
+2011,La Canada WRP,Los Angeles Basin,Disinfected Secondary Effluent,0.2,0.095,106,"$2,805.00","$297,330.00",0.095,106,1,105
+2011,Long Beach WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",25,18.79,21052,$254.00,"$5,347,208.00",5.736,6428,58,1928.3
+2011,Los Coyotes WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",37.5,20.87,23388,$319.00,"$7,460,772.00",5.012,5617,275,2471.5
+2011,Pomona WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,9,10089,$299.00,"$3,016,611.00",2.557,2865,192,2192.5
+2011,San Jose Creek WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",100,67.43,75555,$239.42,"$18,089,424.00",31.895,35740,101,2881.3
+2011,Whittier Narrows WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,7.76,8701,$398.00,"$3,462,998.00",7.434,8330,3,604.3
+2011,Valencia WRP,Santa Clarita Valley,Tertiary recycled water,21.6,14.95,16749,$623.00,"$10,434,627.00",0.3,337,3,129
+2011,Saugus WRP,Santa Clarita Valley,Tertiary recycled water,6.5,5.01,5616,$499.00,"$2,802,384.00",0,0,0,0
+2011,Lancaster WRP,Antelope Valley,Tertiary recycled water,17,11.89,13323,$387.00,"$5,156,001.00",11.85,13277,7,1752
+2011,Palmdale WRP,Antelope Valley,Secondary Effluent,15,8.12,9099,$372.00,"$3,384,828.00",7.133,7993,3,2069
+2010,La Canada WRP,Los Angeles Basin,Disinfected Secondary Effluent,0.2,0.095,107,"$2,168.00","$231,976.00",0.095,107,1,105
+2010,Long Beach WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",25,18.3,20504,$262.00,"$5,372,048.00",5.846,6550,56,1928.3
+2010,Los Coyotes WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",37.5,24.15,27059,$307.00,"$8,307,113.00",5.225,5855,273,2345.1
+2010,Pomona WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,8.39,9396,$339.00,"$3,185,244.00",3.125,3501,192,2192.5
+2010,San Jose Creek WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",100,68.57,76831,$231.00,"$17,747,961.00",43.986,49289,84,3013
+2010,Whittier Narrows WRP,Los Angeles Basin,"Coagulated, filtered, disinfected tertiary recycled water",15,4.73,5301,$653.00,"$3,461,553.00",4.7631,5301,3,604.3
+2010,Valencia WRP,Santa Clarita Valley,Tertiary recycled water,21.6,15.55,17430,$642.00,"$11,190,060.00",0.331,371,1,95
+2010,Saugus WRP,Santa Clarita Valley,Tertiary recycled water,6.5,4.76,5338,$526.00,"$2,807,788.00",0,0,0,0
+2010,Lancaster WRP,Antelope Valley,Tertiary recycled water,17,11.66,13068,$320.00,"$4,181,760.00",11.66,13068,7,1752
+2010,Palmdale WRP,Antelope Valley,Secondary Effluent,15,7.63,8545,$365.00,"$3,118,925.00",7.526,8432,3,2069
+2014,Hyperion WRP,,,0,0,0,0,0,0,0,0,0
+2014,Terminal Island WRP,,,0,0,0,0,0,0,0,0,0
+2014,Tillman WRP,,,0,26,0,0,$0.00,0,0,0,0
+2014,Glendale WRP,,,0,4.5,0,0,0,0,0,0,0
