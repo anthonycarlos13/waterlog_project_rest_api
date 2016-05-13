@@ -4,82 +4,69 @@ import json
 import requests
 import xml.etree.ElementTree as ET
 from water_store.data_store import county_codes, gw_levels_2014
+from django.apps import apps
 
 
-def retrieve_real_time_ground_water_levels_los_angeles_county_as_json(local_code, start_date, end_date):
-    payload = {'format': 'json',
-               'countyCd': local_code,
-               'startDT': start_date,
-               'endDT': end_date}
-    url = 'http://waterservices.usgs.gov/nwis/gwlevels'
-    response = requests.get(url, params=payload)
-    status = response.status_code
-    rel_data = json.loads(response.text)
-    for key, value in rel_data.iteritems():
-        pass
+"""
+    This helper queries USGS groundwater data. PLEASE NOTE: this uses Waterml1, which will be deprecated by USGS as of January 2016
+"""
+
+ground_water_model = apps.get_model("water_store", "GroundWaterWell")
+county_model = apps.get_model('water_store', 'County')
+lac = county_model.objects.get(name__iexact="Los Angeles County", county_code=37)
 
 
-def check_valid_county_code(state_code, county_code):
-    county = None
-    db = open(county_codes)
-    county_data = csv.DictReader(db)
-
-    for data in county_data:
-        if str(data['state_cd']) == str(state_code):
-            if str(data['county_cd']) == str(county_code):
-                county = data['county_nm']
-
-    if county is None:
-        raise ValueError("incorrect state or county code")
-    return county
-
-
-def retrieve_real_time_ground_water_levels_los_angeles_county_as_xml(county_code, start_date, end_date):
+def retrieve_real_time_ground_water_levels_los_angeles_county_as_xml():
     processed_data = []
-    # if check_valid_county_code(state_code, county_code):
-    #     pass
-    # else:
-    #     raise ValueError("County Code not recognized.")
-    #
-    # if county_code == '037' and state_code == 'california':
-    #     response = gw_levels_2014
-    # else:
     payload = {'format': 'waterml',
-               'countyCd': county_code,
-               'startDT': start_date,
-               'endDT': end_date}
+               'countyCd': '06037',
+               'siteType': 'GW',
+               'startDT': '1900-01-01',
+               'endDT': '2016-02-14'}
     url = 'http://waterservices.usgs.gov/nwis/gwlevels'
     response = requests.get(url, params=payload)
     status = response.status_code
+    print status
     root = ET.fromstring(response.text)
     if status == 200:
-        processed_data = time_series_aggregator(root)
+        processed_data = data_model_aggregator(root)
     return processed_data
 
 
-def time_series_aggregator(root):
-    gw_sites_agg_data = []
+def data_model_aggregator(root):
     for timeSeries in root:
-        # Need to reset each pointer with each new timeseries being parsed
-        gw_sites_and_measurements = {}
-        for child in timeSeries:
-            if child.tag == '{http://www.cuahsi.org/waterML/1.2/}sourceInfo':
-                if child.find('{http://www.cuahsi.org/waterML/1.2/}siteCode') is None:
-                    break
+        gw_site_name = None
+        gw_site_code = None
+        latitude = None
+        longitude = None
+        date = None
+        value = None
+        units = None
+        if timeSeries.tag == '{http://www.cuahsi.org/waterML/1.2/}queryInfo':
+            pass
+        else:
+            for child in timeSeries:
+                if child.tag == '{http://www.cuahsi.org/waterML/1.2/}sourceInfo':
+                    gw_site_name = child.find('{http://www.cuahsi.org/waterML/1.2/}siteName').text
+                    gw_site_code = child.find('{http://www.cuahsi.org/waterML/1.2/}siteCode').text
+                    geo = child.find('{http://www.cuahsi.org/waterML/1.2/}geoLocation')
+                    if geo is not None:
+                        for g in geo:
+                            latitude = g[0].text
+                            longitude = g[1].text
+                elif child.tag == '{http://www.cuahsi.org/waterML/1.2/}variable':
+                    unit = child.find('{http://www.cuahsi.org/waterML/1.2/}unit')
+                    if unit is not None:
+                        units = unit.find('{http://www.cuahsi.org/waterML/1.2/}unitCode').text
+                elif child.tag == '{http://www.cuahsi.org/waterML/1.2/}values':
+                    date = child.find('{http://www.cuahsi.org/waterML/1.2/}value').get('dateTime')
+                    value = child.find('{http://www.cuahsi.org/waterML/1.2/}value').text
                 else:
-                    gw_site_code_number = child.find('{http://www.cuahsi.org/waterML/1.2/}siteCode').text
-                    gw_sites_and_measurements['site_code'] = gw_site_code_number
+                    continue
 
-            elif child.tag == '{http://www.cuahsi.org/waterML/1.2/}values':
-                if child.find('{http://www.cuahsi.org/waterML/1.2/}value') is None:
-                    break
-                else:
-                    gw_date_last_measured = child.find('{http://www.cuahsi.org/waterML/1.2/}value').get('dateTime')
-                    gw_site_measurement = child.find('{http://www.cuahsi.org/waterML/1.2/}value').text
-                    gw_sites_and_measurements['site_measurement'] = gw_site_measurement
-                    gw_sites_and_measurements['date_last_measured'] = gw_date_last_measured
 
-            # Want to keep the pointer alive until the iter obtains values so this ensures no site code is input alone
-            if (gw_sites_and_measurements not in gw_sites_agg_data) and (len(gw_sites_and_measurements) > 1):
-                gw_sites_agg_data.append(gw_sites_and_measurements)
-    return gw_sites_agg_data
+                # NEED to first check if the site is not in the data models already
+                if gw_site_name is not None and gw_site_name is not None and latitude is not None and longitude is not None and units is not None and date is not None and value is not None:
+                    gw = ground_water_model(site_name=gw_site_name, site_code=gw_site_code, latitude=latitude, longitude=longitude,
+                                            county=lac, date=date, active=True, value=value, units=units, source="NWIS-USGS")
+                    gw.save()

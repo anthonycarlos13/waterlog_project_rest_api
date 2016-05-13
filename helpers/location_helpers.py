@@ -29,6 +29,6 @@ def import_data_to_data_models():
         except Exception:
             s = state_model(name=data['name'], abbreviation=data['state'], country_internal=usa, state_code=data['state_code'])
             s.save()
-            c = county_model(name=data['county'], state_internal=s, county_code=data['county_code'],
+            c = county_model(name=data['county'], state_internal=s, county_code='0'+data['state']+data['county_code'],
                              active_status=data['active_status'])
             c.save()

@@ -4,7 +4,7 @@ from django.db import models
 from county import County
 
 
-class GroundWaterWell(models.Model):
+class Reservoir(models.Model):
     site_name = models.CharField(max_length=100, null=True, blank=False)
     site_code = models.CharField(max_length=100, null=True, blank=False)
     latitude = models.DecimalField(decimal_places=6, max_digits=75, null=True, blank=False)
