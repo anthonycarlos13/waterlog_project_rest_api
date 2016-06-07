@@ -4,7 +4,7 @@ import requests
 
 reservoir_model = apps.get_model('water_store', 'Reservoir')
 
-a_station_id_inventory = [
+all_station_id_inventory = [
     'ORO', 'CLE', 'LEW', 'WRS', 'COY',
     'SHA', 'KES', 'WHI', 'ANT', 'FRD',
     'DAV', 'BUL', 'ENG', 'FOL', 'UNV',
@@ -16,13 +16,12 @@ a_station_id_inventory = [
     'PYM', 'CAS', 'PRR'
 ]
 
-done = ['ORO', 'CLE', 'LEW', 'WHI', 'ANT',]
 
 def aggregate_scraped_data():
     station_meta_data = {}
     station_time_series_data = {}
-    station_id_inventory = ['ORO', 'CLE', 'LEW', 'WHI', 'ANT','WRS',
-                            'SHA', 'KES', 'DAV', 'BUL',
+    station_id_inventory = ['ORO', 'CLE', 'LEW', 'WHI', 'ANT',
+                            'SHA', 'KES', 'DAV', 'BUL', 'WRS',
                             'ENG', 'FOL', 'UNV', 'LON', 'INV']
 
     try:
@@ -71,11 +70,11 @@ def scrape_timeseries_data(station_id, meta_data):
     request_soupified = BeautifulSoup(swp_client_request_meta_data.text, "html.parser")
     td_list = request_soupified.find_all('td')
     station_calls = {
-        # 'ORO': ORO(td_list, meta_data),
-        # 'CLE': CLE(td_list, meta_data),
-        # 'LEW': LEW(td_list, meta_data),
-        # 'WHI': WHI(td_list, meta_data),
-        # 'ANT': ANT(td_list, meta_data),
+        'ORO': ORO(td_list, meta_data),
+        'CLE': CLE(td_list, meta_data),
+        'LEW': LEW(td_list, meta_data),
+        'WHI': WHI(td_list, meta_data),
+        'ANT': ANT(td_list, meta_data),
         'WRS': WRS(td_list, meta_data),
         'SHA': SHA(td_list, meta_data),
         'KES': KES(td_list, meta_data),
