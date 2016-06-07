@@ -3,32 +3,52 @@ __author__ = 'anthonymendoza'
 from django.db import models
 from county import County
 
+"""
+    Fields, units explained:
+    reservoir_elevation: feet
+    storage: AF
+    top_conservation_storage: AF
+    outflow: CFS
+    inflow: CFS
+    evaporation: CFS
+    full_natural_flow: CFS
+    precipitation: inches
+    precipitation_accumulated: inches
+"""
+
+# TODO: change county to foreign key? maybe.
+
 
 class Reservoir(models.Model):
-    site_name = models.CharField(max_length=100, null=True, blank=False)
-    site_code = models.CharField(max_length=100, null=True, blank=False)
-    latitude = models.DecimalField(decimal_places=6, max_digits=75, null=True, blank=False)
-    longitude = models.DecimalField(decimal_places=6, max_digits=75, null=True, blank=False)
-    county = models.ForeignKey(County, null=True, blank=False)
-    # this needs to be thought of as an 'as of' time period...
-    date = models.DateTimeField(auto_now=True, blank=False, null=True)
-    active = models.BooleanField(null=False, blank=False)
-    value = models.DecimalField(decimal_places=2, max_digits=18, null=True, blank=False)
-    units = models.CharField(max_length=100, null=True, blank=False)
-    source = models.CharField(max_length=500, null=True, blank=False)
+    dam_id = models.CharField(max_length=10, null=True, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    reservoir_elevation = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    reservoir_storage = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    reservoir_area = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    latitude = models.DecimalField(decimal_places=3, max_digits=75, null=True, blank=True)
+    longitude = models.DecimalField(decimal_places=3, max_digits=75, null=True, blank=True)
+    county = models.CharField(max_length=100, null=True, blank=True)
+    stream = models.CharField(max_length=100, null=True, blank=True)
+    storage_capacity = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    outflow = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    inflow = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    precipitation_incremental = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    precipitation_accumulated = models.DecimalField(decimal_places=2, max_digits=75, null=True, blank=True)
+    date = models.DateTimeField(auto_now=False, blank=True, null=True)
+    source = models.CharField(max_length=500, null=True, blank=True)
 
-    @property
-    def state(self):
-        if self.county is None:
-            return None
-        return self.county.state_internal.state_name
+    # @property
+    # def state(self):
+    #     if self.county is None:
+    #         return None
+    #     return self.county.state_internal.state_name
+    #
+    # @property
+    # def country(self):
+    #     if self.county is None:
+    #         return None
+    #     return self.county.state_internal.country_internal.name
 
-    @property
-    def country(self):
-        if self.county is None:
-            return None
-        return self.county.state_internal.country_internal.name
-
-        # class Meta:
-        #     unique_together = ("site_code", "county", "site_name")
+    class Meta:
+        unique_together = ("id", "date")
 

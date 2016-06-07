@@ -9,3 +9,4 @@ from stream_serializer import StreamSerializer
 from evapotranspiration_serializer import EvapotranspirationSerializer
 from precipitation_serializer import PrecipitationSerializer
 from spreadingground_serializer import SpreadingGroundSerializer
+from reservoir_serializer import ReservoirSerializer

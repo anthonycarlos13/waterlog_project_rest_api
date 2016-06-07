@@ -9,3 +9,4 @@ from evapotranspiration import Evapotranspiration
 from precipitation import Precipitation
 from stream import Stream
 from spreading_grounds import SpreadingGround
+from reservoir import Reservoir
