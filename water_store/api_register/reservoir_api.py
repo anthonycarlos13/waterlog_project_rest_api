@@ -14,9 +14,6 @@ from datetime import datetime
 reservoir_model = apps.get_model('water_store', 'Reservoir')
 
 
-# TODO: needs to aggregate data from both the meta data scraper and the station data timeseries data
-
-
 @api_view(['GET'])
 def reservoir_api(request, format=None, **kwargs):
     if request.method == 'GET':
