@@ -57,7 +57,7 @@ def scrape_meta_data(station_id):
 
 def scrape_timeseries_data(station_id, meta_data):
     swp_client_request_meta_data = requests.get(
-        'http://cdec.water.ca.gov/cgi-progs/queryDaily?%s&d=08-June-2016+09:35&span=200days' % station_id)
+        'http://cdec.water.ca.gov/cgi-progs/queryDaily?%s&d=08-June-2016+09:35&span=400days' % station_id)
     request_soupified = BeautifulSoup(swp_client_request_meta_data.text, "html.parser")
     td_list = request_soupified.find_all('td')
     station_calls = {

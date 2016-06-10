@@ -18,7 +18,7 @@ def dynamic_field_lookups(query_params):
 def type_of_query_param(param, obj_name, filter_by):
     try:
         param = int(param)
-        obj_list = obj_name.objects.filter(dam_id=param)
+        obj_list = obj_name.objects.filter(dam_id__iexact=param)
     except ValueError:
         Qr = Q(**{"%s" % filter_by: param})
         obj_list = obj_name.objects.filter(Qr)
