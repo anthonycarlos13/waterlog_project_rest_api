@@ -28,12 +28,11 @@ station_id_inventory = ['ORO', 'CLE', 'LEW', 'WHI', 'ANT',
 @api_view(['GET'])
 def reservoir_api(request, format=None, **kwargs):
     if request.method == 'GET':
-        id_filter = request.query_params['id']
-        date_filter = request.query_params['date']
+        id_filter = request.query_params['dam_id']
         try:
             if id_filter.lower() in map(lambda x:x.lower(),station_id_inventory):
-                date = datetime.strptime(date_filter, '%Y-%m-%d')
-                reservoirs = reservoir_model.objects.filter(Q(dam_id__iexact=id_filter), Q(date__contains=date))
+                Qr = query_helpers.dynamic_field_lookups(request.query_params)
+                reservoirs = reservoir_model.objects.filter(Qr)
                 if reservoirs.count() < 1:
                     data = aggregate_scraped_data()
                     for i in data.values():
