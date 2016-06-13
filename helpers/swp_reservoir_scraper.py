@@ -15,14 +15,14 @@ def aggregate_scraped_data():
                             'BRD', 'TUL', 'NML', 'HTH', 'CHV',
                             'BUC', 'HID', 'MIL', 'SNL', 'PNF',
                             'TRM', 'SCC', 'ISB', 'STP', 'DNN',
-                            'PYM', 'CAS', 'PRR']
+                            'PYM', 'CAS']
 
     try:
         for station_id in station_id_inventory:
             station_meta_data[station_id] = scrape_meta_data(station_id)
             station_time_series_data[station_id] = scrape_timeseries_data(station_id, station_meta_data[station_id])
     except Exception as e:
-        print e
+        pass
 
     return station_time_series_data
 
@@ -57,7 +57,7 @@ def scrape_meta_data(station_id):
 
 def scrape_timeseries_data(station_id, meta_data):
     swp_client_request_meta_data = requests.get(
-        'http://cdec.water.ca.gov/cgi-progs/queryDaily?%s&d=08-June-2016+09:35&span=400days' % station_id)
+        'http://cdec.water.ca.gov/cgi-progs/queryDaily?%s&d=11-June-2016+09:35&span=365days' % station_id)
     request_soupified = BeautifulSoup(swp_client_request_meta_data.text, "html.parser")
     td_list = request_soupified.find_all('td')
     station_calls = {
@@ -98,7 +98,7 @@ def scrape_timeseries_data(station_id, meta_data):
         'DNN': DNN(td_list, meta_data),
         'PYM': PYM(td_list, meta_data),
         'CAS': CAS(td_list, meta_data),
-        'PRR': PRR(td_list, meta_data)
+        'PRR': PAR(td_list, meta_data)
 
     }
     return station_calls[station_id]
