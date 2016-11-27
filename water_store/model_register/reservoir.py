@@ -1,7 +1,6 @@
 __author__ = 'anthonymendoza'
 
 from django.db import models
-from county import County
 
 """
     Fields, units explained:
