@@ -119,7 +119,7 @@ tornado==4.2.1
 twilio==4.6.0
 Unidecode==0.4.18
 urbanairship==0.7.4
-urllib3==1.11
+urllib3==1.26.5
 utils==0.8.0
 vboxapi==1.0
 virtualenv==13.1.0
